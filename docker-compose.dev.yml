@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  postgres:
+    extends:
+      file: service.yml
+      service: postgres
+    networks:
+      - to-do-list
+
+  pgadmin:
+    extends:
+      file: service.yml
+      service: pgadmin
+    networks:
+      - to-do-list
+    depends_on:
+      - postgres
+
+  rabbitmq:
+    extends:
+      file: service.yml
+      service: rabbitmq
+    networks:
+      - to-do-list
+
+networks:
+  to-do-list:

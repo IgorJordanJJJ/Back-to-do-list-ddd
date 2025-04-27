@@ -1,68 +1,46 @@
+version: '3.8'
+
 services:
-
   postgres:
-    image: postgres:17.4
-    restart: "no"
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres_secret
-      POSTGRES_DB: todo_db
-    healthcheck:
-      test: pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB
-      interval: 10s
-      timeout: 5s
-      start_period: 10s
-      retries: 5
-
+    extends:
+      file: service.yml
+      service: postgres
+    networks:
+      - to-do-list
 
   pgadmin:
-    image: dpage/pgadmin4:9.2.0
-    restart: "no"
-    ports:
-      - "5050:80"
-    volumes:
-      - pgadmin_data:/var/lib/pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
-      PGADMIN_CONFIG_SERVER_MODE: "False"
-      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
-    healthcheck:
-      test: wget --no-verbose --tries=1 --spider http://localhost:80/misc/ping || exit -1
-      interval: 10s
-      timeout: 5s
-      start_period: 10s
-      retries: 5
+    extends:
+      file: service.yml
+      service: pgadmin
+    networks:
+      - to-do-list
     depends_on:
       - postgres
 
   rabbitmq:
-    image: rabbitmq:3.12-management
-    restart: "no"
-    ports:
-      - "5672:5672"    # Порт для AMQP протокола
-      - "15672:15672"  # Порт для веб-интерфейса управления
+    extends:
+      file: service.yml
+      service: rabbitmq
+    networks:
+      - to-do-list
+
+  to-do-list-app:
+    extends:
+      file: service.yml
+      service: to-do-list-app
     environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
-    volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
-    healthcheck:
-      test: rabbitmq-diagnostics -q ping
-      interval: 10s
-      timeout: 5s
-      start_period: 10s
-      retries: 5
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-local}
+      DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}?prepareThreshold=0
+      DATASOURCE_USERNAME: ${POSTGRES_USER}
+      DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      SHOW_SQL: ${SHOW_SQL}
+      LOGGING_LEVEL_SEC: ${LOGGING_LEVEL_SEC}
+      LOGGING_LEVEL_ROOT: ${LOGGING_LEVEL_ROOT}
+      LOGGING_LEVEL_KYZIA: ${LOGGING_LEVEL_KYZIA}
+    networks:
+      - to-do-list
+    depends_on:
+      - postgres
 
-
-
-
-
-volumes:
-  postgres_data:
-  pgadmin_data:
-  rabbitmq_data:
+networks:
+  to-do-list:
