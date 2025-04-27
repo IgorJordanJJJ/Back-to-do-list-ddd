@@ -9,5 +9,4 @@ plugins {
  */
 
 rootProject.name = "to-do-list"
-include("domain", "infrastructure", "api", "application", "bootstrap")
-include("ports")
+include("domain", "infrastructure", "api", "application", "bootstrap", "ports")
