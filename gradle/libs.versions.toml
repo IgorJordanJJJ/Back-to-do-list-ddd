@@ -1,0 +1,72 @@
+[versions]
+kotlin-version = "2.0.20"
+spring-boot-version = "3.3.4"
+spring-module = "1.2.4"
+dependency-management-version = "1.1.6"
+jackson = "2.17.2"
+coroutines = "1.7.0"
+reactor-kotlin-extensions-version= "1.2.2"
+junit-launcher = "1.11.0"
+reactor-test = "3.5.5"
+swagger-version = "2.6.0"
+log4j-version = "2.24.1"
+mockito-core = "5.14.2"
+mockito-kotlin = "5.4.0"
+mockk = "1.13.13"
+postgresql = "42.7.4"
+ktlint-version="12.1.1"
+apache-poi-version="5.3.0"
+io-nats-spring-version="0.5.7"
+io-nats-version="2.20.4"
+jjwt-version="0.12.5"
+flyway-version="11.8.0" # Добавлена версия для Flyway
+
+[libraries]
+spring-boot-starter = { group = "org.springframework.boot", name = "spring-boot-starter", version.ref = "spring-boot-version" }
+spring-boot-gradle-plugin = { group = "org.springframework.boot", name = "spring-boot-gradle-plugin", version.ref = "spring-boot-version" }
+spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator", version.ref = "spring-boot-version" }
+spring-boot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring-boot-version" }
+spring-boot-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "spring-boot-version" }
+spring-boot-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "spring-boot-version" }
+spring-module-core = { group = "org.springframework.modulith", name = "spring-modulith-starter-core", version.ref = "spring-module" }
+spring-module-test = { group = "org.springframework.modulith", name = "spring-modulith-starter-test", version.ref = "spring-module" }
+spring-boot-webflux = { group = "org.springframework.boot", name = "spring-boot-starter-webflux", version.ref = "spring-boot-version" }
+spring-boot-starter-security = { group = "org.springframework.boot", name = "spring-boot-starter-security", version.ref = "spring-boot-version" }
+spring-boot-starter-amqp = { group = "org.springframework.boot", name = "spring-boot-starter-amqp", version.ref = "spring-boot-version" }
+flyway-core = { group = "org.flywaydb", name = "flyway-core", version.ref = "flyway-version" }
+flyway-database-postgresql = { group = "org.flywaydb", name = "flyway-database-postgresql", version.ref = "flyway-version" }
+jackson-kotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version.ref = "jackson" }
+reactor-kotlin-extensions = { group = "io.projectreactor.kotlin", name = "reactor-kotlin-extensions", version.ref = "reactor-kotlin-extensions-version" }
+kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin-version" }
+coroutines-reactor = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-reactor", version.ref = "coroutines" }
+spring-boot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools", version.ref = "spring-boot-version" }
+spring-boot-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "spring-boot-version" }
+reactor-test = { group = "io.projectreactor", name = "reactor-test", version.ref = "reactor-test" }
+kotlin-test-junit5 = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit5", version.ref = "kotlin-version" }
+junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher", version.ref = "junit-launcher" }
+springdoc-openapi-starter-webmvc-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version.ref = "swagger-version" }
+springdoc-openapi-starter-webflux-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webflux-ui", version.ref = "swagger-version" }
+apache-logging-log4j = { group = "org.apache.logging.log4j", name = "log4j-core", version.ref = "log4j-version" }
+spring-boot-starter-data-jpa = { group = "org.springframework.boot", name = "spring-boot-starter-data-jpa", version.ref = "spring-boot-version" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin-version" }
+kotlin-stdlib-jdk8 = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin-version" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito-core" }
+mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito-kotlin" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+postgresql = { group = "org.postgresql", name = "postgresql", version.ref = "postgresql" }
+apache-poi = { group = "org.apache.poi", name = "poi", version.ref = "apache-poi-version" }
+apache-poi-ooxml = { group = "org.apache.poi", name = "poi-ooxml", version.ref = "apache-poi-version" }
+io-nats-spring = { group = "io.nats", name = "nats-spring", version.ref = "io-nats-spring-version" }
+io-nats = { group = "io.nats", name = "jnats", version.ref = "io-nats-version" }
+jjwt-api = { group = "io.jsonwebtoken", name = "jjwt-api", version.ref = "jjwt-version" }
+jjwt-impl = { group = "io.jsonwebtoken", name = "jjwt-impl", version.ref = "jjwt-version" }
+jjwt-jackson = { group = "io.jsonwebtoken", name = "jjwt-jackson", version.ref = "jjwt-version" }
+
+[bundles]
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot-version" }
+dependency-management = { id = "io.spring.dependency-management", version.ref = "dependency-management-version" }
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-version" }
+kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin-version" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint-version" }

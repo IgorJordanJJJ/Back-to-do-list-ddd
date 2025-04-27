@@ -1,0 +1,12 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+.idea
+
+# Ignore Gradle build output directory
+build
+/logs
+/app/logs
+/.kotlin/errors
+/.kotlin
+/.idea
+.DS_Store

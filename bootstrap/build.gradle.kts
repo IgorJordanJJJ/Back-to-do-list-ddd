@@ -1,0 +1,37 @@
+plugins {
+    alias(libs.plugins.kotlin.plugin.spring)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.dependency.management)
+    java
+}
+
+dependencies {
+    implementation(libs.io.nats.spring)
+    implementation(libs.io.nats)
+    implementation(libs.springdoc.openapi.starter.webmvc.ui)
+    implementation(libs.springdoc.openapi.starter.webflux.ui)
+    implementation(libs.spring.boot.starter.actuator)
+    implementation(libs.spring.boot.validation)
+    implementation(libs.spring.boot.web)
+    implementation(libs.spring.boot.webflux)
+    implementation(libs.spring.boot.dependencies)
+    implementation(libs.jackson.kotlin)
+    implementation(libs.reactor.kotlin.extensions)
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.spring.module.core)
+    implementation(libs.spring.boot.starter.data.jpa)
+    implementation(libs.spring.boot.starter.security)
+    implementation(libs.spring.boot.starter.amqp)
+    implementation(libs.flyway.core)
+    implementation(libs.flyway.database.postgresql)
+    implementation(libs.jjwt.api)
+    runtimeOnly(libs.jjwt.impl)
+    runtimeOnly(libs.jjwt.jackson)
+    runtimeOnly(libs.postgresql)
+    implementation(project(":api"))
+    implementation(project(":application"))
+    implementation(project(":infrastructure"))
+    implementation(project(":domain"))
+    developmentOnly(libs.spring.boot.devtools)
+    testRuntimeOnly(libs.junit.platform.launcher)
+}
